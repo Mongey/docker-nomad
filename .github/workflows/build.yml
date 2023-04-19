@@ -1,6 +1,6 @@
 name: Docker build
 
-on: [pull_request]
+on: [push]
 
 jobs:
   test:
@@ -30,3 +30,4 @@ jobs:
         with:
           push: false
           platforms: ${{ steps.buildx.outputs.platforms }}
+
