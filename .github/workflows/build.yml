@@ -25,9 +25,15 @@ jobs:
         with:
           install: true
 
-      - name: Build and push
+      - name: Build and push debian
         uses: docker/build-push-action@v3
         with:
           push: false
           platforms: ${{ steps.buildx.outputs.platforms }}
 
+      - name: Build and push alpine
+        uses: docker/build-push-action@v3
+        with:
+          push: false
+          platforms: linux/amd64
+          file: Dockerfile.alpine
