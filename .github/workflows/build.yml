@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Lint the Dockerfile
-        uses: hadolint/hadolint-action@v2.1.0
+        uses: hadolint/hadolint-action@v3.1.0
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/amd64,linux/arm64,linux/386
 
@@ -26,13 +26,13 @@ jobs:
           install: true
 
       - name: Build and push debian
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: false
           platforms: ${{ steps.buildx.outputs.platforms }}
 
       - name: Build and push alpine
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: false
           platforms: linux/amd64
